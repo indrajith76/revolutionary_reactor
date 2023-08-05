@@ -27,7 +27,7 @@ const Navbar = () => {
 
       <div className="py-4">
         <div className="xl:container mx-auto flex items-center justify-between">
-          <Link to={"#"}>
+          <Link to={"/"}>
             <span className="text-[#003d2a] flex items-center gap-2 text-2xl font-bold">
               <TiShoppingCart />
               Shopcart

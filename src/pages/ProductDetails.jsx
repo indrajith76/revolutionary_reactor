@@ -4,10 +4,12 @@ import { AiFillStar } from "react-icons/ai";
 
 const ProductDetails = () => {
   const { title, description, image, price, rating } = useLoaderData();
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+
+  console.log(count);
 
   return (
-    <div className="xl:container mx-auto flex justify-between mt-10 px-10">
+    <div className="xl:container mx-auto flex justify-between gap-10 mt-10 px-10">
       <img className="w-[35%] border px-20 py-10" src={image} alt="" />
       <div>
         <div>
@@ -21,11 +23,11 @@ const ProductDetails = () => {
             <AiFillStar />
             <p className="text-black">({rating.count})</p>
           </div>
-          <p className="text-2xl font-medium">Price: ${price}</p>
+          <p className="text-2xl font-medium">Price: ${price * count}</p>
         </div>
-        <div className="bg-gray-200 inline-block rounded-md">
+        <div className="bg-gray-200 inline-block rounded-md my-5">
           <button
-            onClick={() => {setCount(count - 1)}}
+            onClick={() => (count == 1 ? setCount(1) : setCount(count - 1))}
             className="px-5 py-1 rounded font-bold text-black"
           >
             -
@@ -33,7 +35,7 @@ const ProductDetails = () => {
           <input
             type="text"
             disabled
-            defaultValue={count}
+            value={count}
             className="border w-6 text-center mx-2 rounded text-lg font-medium"
           />
           <button
@@ -43,9 +45,9 @@ const ProductDetails = () => {
             +
           </button>
         </div>
-        <div>
-          <button>Buy Now</button>
-          <button>Add to Cart</button>
+        <div className="flex gap-3">
+          <button className="border bg-[#003d2a] text-xl px-6 py-2 rounded-3xl font-semibold text-white">Buy Now</button>
+          <button className="border-2 text-[#003d2a] border-[#003d2a] text-xl px-6 py-2 rounded-3xl font-semibold">Add to Cart</button>
         </div>
       </div>
     </div>
